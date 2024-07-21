@@ -1,0 +1,14 @@
+# Activer le module de réécriture d'URL
+RewriteEngine On
+
+# Ne pas réécrire les requêtes pour les fichiers et répertoires existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrire toutes les autres requêtes vers index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Exemple de règle pour autoriser l'accès aux fichiers
+<FilesMatch "\.(jpg|jpeg|png|gif|mp4)$">
+    Require all granted
+</FilesMatch>
